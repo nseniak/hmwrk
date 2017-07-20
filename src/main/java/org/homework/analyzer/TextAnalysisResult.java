@@ -25,6 +25,13 @@ public interface TextAnalysisResult {
 	 *
 	 * @param output stream to print the report to
 	 */
-	void report(PrintStream output);
+	default void report(PrintStream output) {
+		for (int wordLength : wordLengths()) {
+			for (WordCount wordCount : wordCounts(wordLength)) {
+				output.println(wordCount.getCount() + " " + wordCount.getWord());
+			}
+		}
+	}
+
 
 }

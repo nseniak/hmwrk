@@ -1,6 +1,5 @@
 package org.homework.analyzer;
 
-import java.io.PrintStream;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Map;
@@ -39,15 +38,6 @@ class CollectionTextAnalysisResultImpl implements TextAnalysisResult {
 	@Override
 	public Collection<WordCount> wordCounts(int length) {
 		return lengthMap.getOrDefault(length, new TreeMap<>()).values();
-	}
-
-	@Override
-	public void report(PrintStream output) {
-		for (int wordLength : wordLengths()) {
-			for (WordCount wordCount : wordCounts(wordLength)) {
-				output.println(wordCount.getCount() + " " + wordCount.getWord());
-			}
-		}
 	}
 
 }
