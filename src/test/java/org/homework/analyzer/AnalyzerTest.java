@@ -16,7 +16,11 @@ public class AnalyzerTest {
 
 	@Test
 	public void test() {
-		TextAnalyzer analyzer = new TextAnalyzer();
+		testImpl(TextAnalyzers.makeUseCollections());
+		testImpl(TextAnalyzers.makeDontUseCollections());
+	}
+
+	private void testImpl(TextAnalyzer analyzer) {
 		TextAnalysisResult result = analyzer.analyze("The quick brown fox jumped over the lazy brown dog's back");
 		assertThat(result.wordLengths(), contains(3, 4, 5, 6));
 		assertThat(result.wordCounts(3), contains(
@@ -56,13 +60,23 @@ public class AnalyzerTest {
 
 	@Test
 	public void testEmpty() {
-		assertThat(new TextAnalyzer().analyze("").wordLengths(), empty());
-		assertThat(new TextAnalyzer().analyze("  \n  ").wordLengths(), empty());
+		testEmptyImpl(TextAnalyzers.makeUseCollections());
+		testEmptyImpl(TextAnalyzers.makeDontUseCollections());
+	}
+
+	private void testEmptyImpl(TextAnalyzer analyzer) {
+		assertThat(analyzer.analyze("").wordLengths(), empty());
+		assertThat(analyzer.analyze("  \n  ").wordLengths(), empty());
 	}
 
 	@Test
 	public void testMultipleSpaces() {
-		TextAnalysisResult result = new TextAnalyzer().analyze("  The  fox\n  \n jumped  \n");
+		testMultipleSpacesImpl(TextAnalyzers.makeUseCollections());
+		testMultipleSpacesImpl(TextAnalyzers.makeDontUseCollections());
+	}
+
+	private void testMultipleSpacesImpl(TextAnalyzer analyzer) {
+		TextAnalysisResult result = analyzer.analyze("  The  fox\n  \n jumped  \n");
 		assertThat(result.wordLengths(), contains(3, 6));
 		assertThat(result.wordCounts(3), contains(
 				new WordCount("The", 1),
@@ -75,14 +89,24 @@ public class AnalyzerTest {
 
 	@Test
 	public void testReader() {
+		testReaderimpl(TextAnalyzers.makeUseCollections());
+		testReaderimpl(TextAnalyzers.makeDontUseCollections());
+	}
+
+	private void testReaderimpl(TextAnalyzer analyzer) {
 		Reader reader = new StringReader("jumped the");
-		TextAnalysisResult result = new TextAnalyzer().analyze(reader);
+		TextAnalysisResult result = analyzer.analyze(reader);
 		assertThat(result.wordLengths(), contains(3, 6));
 	}
 
 	@Test
 	public void testDiacritics() {
-		TextAnalysisResult result = new TextAnalyzer().analyze("hélô à toût çon toût");
+		testDiacriticsImpl(TextAnalyzers.makeUseCollections());
+		testDiacriticsImpl(TextAnalyzers.makeDontUseCollections());
+	}
+
+	private void testDiacriticsImpl(TextAnalyzer analyzer) {
+		TextAnalysisResult result = analyzer.analyze("hélô à toût çon toût");
 		assertThat(result.wordLengths(), contains(1, 3, 4));
 		assertThat(result.wordCounts(1), contains(
 				new WordCount("à", 1)
