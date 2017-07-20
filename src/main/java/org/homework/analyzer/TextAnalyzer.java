@@ -3,9 +3,9 @@ package org.homework.analyzer;
 import java.io.Reader;
 
 /**
- * The text analyzer class processes text and provides information about its word content.
+ * Processes text and provides information about its word content.
  */
-interface TextAnalyzer {
+public interface TextAnalyzer {
 
 	/**
 	 * Analyzes text read from a reader.

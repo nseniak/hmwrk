@@ -11,7 +11,7 @@ import java.util.TreeMap;
  *
  * @see CollectionTextAnalyzerImpl
  */
-public class NoCollectionTextAnalysisResultImpl implements TextAnalysisResult {
+class NoCollectionTextAnalysisResultImpl implements TextAnalysisResult {
 
 	/**
 	 * Maps word length -> word -> word count.

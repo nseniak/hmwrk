@@ -8,7 +8,7 @@ import java.util.Collection;
  *
  * @see TextAnalyzer
  */
-interface TextAnalysisResult {
+public interface TextAnalysisResult {
 
 	/**
 	 * @return read-only collection of word length sorted by increasing order

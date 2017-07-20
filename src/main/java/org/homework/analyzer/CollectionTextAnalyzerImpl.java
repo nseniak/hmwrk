@@ -6,18 +6,18 @@ import java.util.Scanner;
 /**
  * The text analyzer class processes text and provides information about its word content.
  */
-public class CollectionTextAnalyzerImpl implements TextAnalyzer {
+class CollectionTextAnalyzerImpl implements TextAnalyzer {
 
 	CollectionTextAnalyzerImpl() {
 	}
 
 	@Override
-	public CollectionTextAnalysisResultImpl analyze(Reader reader) {
+	public TextAnalysisResult analyze(Reader reader) {
 		return analyze(new Scanner(reader));
 	}
 
 	@Override
-	public CollectionTextAnalysisResultImpl analyze(String input) {
+	public TextAnalysisResult analyze(String input) {
 		return analyze(new Scanner(input));
 	}
 
