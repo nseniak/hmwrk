@@ -6,7 +6,7 @@
 
 	<groupId>org.homework</groupId>
 	<artifactId>text-analyzer</artifactId>
-	<version>1.0-RELEASE</version>
+	<version>2.0-RELEASE</version>
 	<build>
 		<plugins>
 			<plugin>
