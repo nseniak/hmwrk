@@ -3,9 +3,6 @@ package org.homework.analyzer;
 import java.io.Reader;
 import java.util.Scanner;
 
-/**
- * The text analyzer class processes text and provides information about its word content.
- */
 class CollectionTextAnalyzerImpl implements TextAnalyzer {
 
 	CollectionTextAnalyzerImpl() {
